@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useGlobalContext } from "../Context";
 import CountryFilterList from "./CountryFilterList";
 import FormArea from "./FormArea";
+import GroupArea from "./GroupArea";
 const Countries = () => {
-  const { filter } = useGlobalContext();
+  const { filter, isGroup } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+  
 
    useEffect(() => {
      const timer = setTimeout(() => {
@@ -30,18 +32,28 @@ const Countries = () => {
         <FormArea />
       </div>
 
-      {error ? (
-        <div className="flex items-center justify-center mt-5">
-          <p className="text-xl font-bold text-red-500">Filter not found</p>
+      {isGroup && (
+        <div className="max-w-5xl overflow-x-auto mx-auto p-4 ">
+          <GroupArea />
         </div>
-      ) : isLoading ? (
-        <div className="flex items-center justify-center mt-5">
-          <p>Loading...</p>
-        </div>
-      ) : (
-        <div className="max-w-5xl overflow-x-auto mx-auto p-4 rounded-md border border-slate-300 my-7 shadow-xl">
-          <CountryFilterList />
-        </div>
+      )}
+
+      {!isGroup && (
+        <>
+          {error ? (
+            <div className="flex items-center justify-center mt-5">
+              <p className="text-xl font-bold text-red-500">Filter not found</p>
+            </div>
+          ) : isLoading ? (
+            <div className="flex items-center justify-center mt-5">
+              <p>Loading...</p>
+            </div>
+          ) : (
+            <div className="max-w-5xl overflow-x-auto mx-auto p-4 rounded-md border border-slate-300 my-7 shadow-xl">
+              <CountryFilterList />
+            </div>
+          )}
+        </>
       )}
     </div>
   );

@@ -1,8 +1,34 @@
 import { useGlobalContext } from "../Context";
+import { filterGroupSize } from "./Functions";
 
 const FormArea = () => {
-  const { search, setSearch } = useGlobalContext();
+  const {
+    filter,
+    search,
+    setSearch,
+    groupSize,
+    setGroupSize,
+    setIsGroup,
+    group,
+    setGroup,
+  } = useGlobalContext();
 
+  const handleGroupSize = (e) => {
+    const groupSizeValue = Number(e.target.value);
+    if (!isNaN(groupSizeValue)) {
+      setGroupSize(groupSizeValue);
+    }
+  };
+
+  const handleSubmitGroupSize = (e) => {
+    e.preventDefault();
+    if (groupSize) {
+      const groups = filterGroupSize(filter, groupSize);
+      setGroup(groups);
+      setIsGroup(true);
+    }
+  };
+  console.log(group);
   return (
     <div className="flex items-center justify-center space-x-4">
       <div className="relative z-20  mb-6 group">
@@ -23,7 +49,10 @@ const FormArea = () => {
         </label>
       </div>
 
-      <form className="flex items-center justify-center space-x-2">
+      <form
+        className="flex items-center justify-center space-x-2"
+        onSubmit={handleSubmitGroupSize}
+      >
         <div className="relative z-20  mb-6 group">
           <input
             type="text"
@@ -31,6 +60,8 @@ const FormArea = () => {
             name="groupSize"
             id="groupSize"
             placeholder=" "
+            value={groupSize}
+            onChange={handleGroupSize}
           />
           <label
             htmlFor="groupSize"
@@ -41,6 +72,7 @@ const FormArea = () => {
         </div>
         <button
           type="submit"
+          disabled={groupSize === "" && groupSize === 0}
           className="text-blue-700 hover:text-white border border-blue-400  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2 text-center mr-2 mb-3  disabled:bg-blue-400 disabled:text-gray-50"
         >
           Show Group

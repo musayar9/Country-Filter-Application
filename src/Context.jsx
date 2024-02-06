@@ -9,9 +9,10 @@ const AppProvider = ({ children }) => {
   const [filter, setFilter] = useState([]);
   const [selectCountries, setSelectCountries] = useState("");
   const [randomColor, setRandomColor] = useState(null);
+  const [group, setGroup] = useState([])
   const [groupSize, setGroupSize] = useState([]);
   const [isGroup, setIsGroup] = useState(false);
-
+  const [count, setCount] = useState(0);
   const { loading, error, data } = useQuery(GET_COUNTRIES);
   console.log("data", data);
 
@@ -64,6 +65,13 @@ const AppProvider = ({ children }) => {
     return <div>Error</div>;
   }
 
+
+    const handleReturnList = () => {
+      setIsGroup(false);
+      setCount(0);
+      setSearch("");
+      setGroupSize([]);
+    };
   return (
     <AppContext.Provider
       value={{
@@ -74,10 +82,13 @@ const AppProvider = ({ children }) => {
         selectCountries,
         randomColor,
         handleCountrySelect,
+        group, setGroup,
         groupSize,
         setGroupSize,
         isGroup,
-        setIsGroup
+        setIsGroup,
+        count, setCount
+        
       }}
     >
       {children}
