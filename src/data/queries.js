@@ -10,6 +10,11 @@ export const GET_COUNTRIES = gql`
       native
       emoji
       currency
+      languages {
+        code
+        name
+        native
+      }
     }
   }
 `;
