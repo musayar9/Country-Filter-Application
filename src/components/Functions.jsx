@@ -5,15 +5,16 @@ export const getRandomColor = () => {
   return `rgb(${r},${g},${b})`;
 };
 
+export const filterGroupSize = (data, size) => {
+  console.log("size0", size);
+  const groups = [];
+  for (let i = 0; i < data.length; i += size) {
+    groups.push(data.slice(i, i + size));
+  }
 
-export const filterGroupSize = (data, size)=>{
-console.log("size0", size);
-const groups = [];
-for (let i = 0; i < data.length; i += size) {
-  groups.push(data.slice(i, i + size));
-}
+  return groups;
+};
 
-return groups;
-
-
-}
+export const backToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};

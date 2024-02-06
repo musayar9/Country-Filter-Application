@@ -11,7 +11,7 @@ const AppProvider = ({ children }) => {
   const [selectCountries, setSelectCountries] = useState("");
   const [randomColor, setRandomColor] = useState(null);
   const [group, setGroup] = useState([]);
-  const [groupSize, setGroupSize] = useState([]);
+  const [groupSize, setGroupSize] = useState("");
   const [isGroup, setIsGroup] = useState(false);
   const [count, setCount] = useState(0);
 
@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     if (!loading) {
-      let countries = data.countries;
+      let countries = data?.countries;
       let filterData = countries.filter((country) => {
         const currency = Array.isArray(country.currency)
           ? country.currency[0]

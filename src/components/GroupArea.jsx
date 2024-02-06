@@ -19,7 +19,7 @@ const GroupArea = () => {
 
   useEffect(() => {
     let filteredCountries = group[count]?.filter((group) => {
-      const currency = Array.isArray(group.currency)
+      const currency = Array.isArray(group.currency) 
         ? group.currency[0]
         : group.currency;
 
@@ -45,7 +45,7 @@ const GroupArea = () => {
     }
   }, [count, search, group]);
 
-  console.log("count0", count);
+
   return (
     <>
       {filter.length !== 0 ? (

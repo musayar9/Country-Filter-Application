@@ -1,5 +1,6 @@
 import { useGlobalContext } from "../Context";
-
+import { FiArrowUp } from "react-icons/fi";
+import { backToTop } from "./Functions";
 const CountryFilterList = () => {
   const { filter, selectCountries, randomColor, handleCountrySelect } =
     useGlobalContext();
@@ -22,11 +23,12 @@ const CountryFilterList = () => {
               Native
             </th>
             <th scope="col" className="px-3 py-4">
-              Currency
-            </th>
-            <th scope="col" className="px-3 py-4">
               Languages
             </th>
+            <th scope="col" className="px-3 py-4">
+              Currency
+            </th>
+
             <th scope="col" className="px-3 py-4">
               Phone
             </th>
@@ -51,23 +53,30 @@ const CountryFilterList = () => {
               }}
               onClick={() => handleCountrySelect(country)}
             >
-              <td className="px-4  py-2 font-medium  whitespace-nowrap">
+              <td className="px-4  py-2 font-medium  whitespace-nowrap text-emerald-400">
                 {country.code}
               </td>
-              <td className="px-4  py-2 " style={{}}>
-                {country.name}
-              </td>
+              <td className="px-4  py-2 ">{country.name}</td>
               <td className="px-4  py-2 ">{country.capital}</td>
               <td className="px-4  py-2  ">{country.native}</td>
-              <td className="px-4  py-2 ">{country.currency}</td>
-              <td className="px-4  py-2   uppercase">
-                {country.languages[0]?.code}
+              <td className="px-4  py-2   capitalize">
+                {country.languages[0]?.name}
               </td>
+              <td className="px-4  py-2 ">{country.currency}</td>
+
               <td className="px-4  py-2  ">(+{country.phone})</td>
             </tr>
           ))}
         </tbody>
       </table>
+      <button
+        className={`border border-emerald-200 px-5 py-2 rounded-xl flex items-center justify-between space-x-3 
+        hover:bg-emerald-400 hover:text-emerald-50 duration-700 hover:border-emerald-300  active:translate-y-7`}
+        onClick={backToTop}
+        style={{ bottom: "20px", right: "40px", position: "fixed" }}
+      >
+        <FiArrowUp /> <span className="font-semibold text-md">Back To Top</span>
+      </button>
     </>
   );
 };
