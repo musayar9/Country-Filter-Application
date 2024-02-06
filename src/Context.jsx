@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
   const [groupSize, setGroupSize] = useState([]);
   const [isGroup, setIsGroup] = useState(false);
   const [count, setCount] = useState(0);
-  const [groupFilter, setGroupFilter] = useState([]);
+
 
   const { loading, error, data } = useQuery(GET_COUNTRIES);
   console.log(data);
@@ -91,9 +91,6 @@ const AppProvider = ({ children }) => {
         setIsGroup,
         count,
         setCount,
-
-        groupFilter,
-        setGroupFilter,
         handleReturnList,
       }}
     >
