@@ -7,7 +7,7 @@ const CountryFilterList = () => {
   return (
     <>
       <table className="text-sm w-full  text-left text-gray-500 p-5 ">
-        <thead className="text-sm text-gray-100 capitalize bg-emerald-400 rounded-md">
+        <thead className="text-sm text-gray-100 capitalize bg-emerald-400 border ">
           <tr className="">
             <th scope="col" className="px-3 py-4">
               Code

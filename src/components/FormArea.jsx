@@ -9,8 +9,9 @@ const FormArea = () => {
     groupSize,
     setGroupSize,
     setIsGroup,
-    group,
     setGroup,
+    setCount
+
   } = useGlobalContext();
 
   const handleGroupSize = (e) => {
@@ -26,9 +27,10 @@ const FormArea = () => {
       const groups = filterGroupSize(filter, groupSize);
       setGroup(groups);
       setIsGroup(true);
+      setCount(0)
     }
   };
-  console.log(group);
+
   return (
     <div className="flex items-center justify-center space-x-4">
       <div className="relative z-20  mb-6 group">

@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_COUNTRIES } from "./data/queries";
 import { getRandomColor } from "./components/Functions";
+import Loading from "./components/Loading";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
@@ -9,13 +10,14 @@ const AppProvider = ({ children }) => {
   const [filter, setFilter] = useState([]);
   const [selectCountries, setSelectCountries] = useState("");
   const [randomColor, setRandomColor] = useState(null);
-  const [group, setGroup] = useState([])
+  const [group, setGroup] = useState([]);
   const [groupSize, setGroupSize] = useState([]);
   const [isGroup, setIsGroup] = useState(false);
   const [count, setCount] = useState(0);
-  const { loading, error, data } = useQuery(GET_COUNTRIES);
-  console.log("data", data);
+  const [groupFilter, setGroupFilter] = useState([]);
 
+  const { loading, error, data } = useQuery(GET_COUNTRIES);
+  console.log(data);
   const handleCountrySelect = (country) => {
     if (selectCountries === country?.code) {
       setSelectCountries(null);
@@ -58,20 +60,19 @@ const AppProvider = ({ children }) => {
   }, [data, search, setFilter, loading]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
     return <div>Error</div>;
   }
 
-
-    const handleReturnList = () => {
-      setIsGroup(false);
-      setCount(0);
-      setSearch("");
-      setGroupSize([]);
-    };
+  const handleReturnList = () => {
+    setIsGroup(false);
+    setCount(0);
+    setSearch("");
+    setGroupSize([]);
+  };
   return (
     <AppContext.Provider
       value={{
@@ -82,14 +83,18 @@ const AppProvider = ({ children }) => {
         selectCountries,
         randomColor,
         handleCountrySelect,
-        group, setGroup,
+        group,
+        setGroup,
         groupSize,
         setGroupSize,
         isGroup,
         setIsGroup,
-        count, setCount,
-        handleReturnList
-        
+        count,
+        setCount,
+
+        groupFilter,
+        setGroupFilter,
+        handleReturnList,
       }}
     >
       {children}
