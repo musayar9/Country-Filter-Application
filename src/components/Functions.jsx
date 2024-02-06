@@ -6,7 +6,6 @@ export const getRandomColor = () => {
 };
 
 export const filterGroupSize = (data, size) => {
-  console.log("size0", size);
   const groups = [];
   for (let i = 0; i < data.length; i += size) {
     groups.push(data.slice(i, i + size));

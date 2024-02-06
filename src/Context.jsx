@@ -17,7 +17,6 @@ const AppProvider = ({ children }) => {
 
 
   const { loading, error, data } = useQuery(GET_COUNTRIES);
-  console.log(data);
   const handleCountrySelect = (country) => {
     if (selectCountries === country?.code) {
       setSelectCountries(null);
