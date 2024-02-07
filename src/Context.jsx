@@ -14,9 +14,13 @@ const AppProvider = ({ children }) => {
   const [groupSize, setGroupSize] = useState("");
   const [isGroup, setIsGroup] = useState(false);
   const [count, setCount] = useState(0);
+  const [groupData, setGroupData] = useState("");
 
-
-  const { loading, error, data } = useQuery(GET_COUNTRIES);
+  const { loading, error, data } = useQuery(GET_COUNTRIES, {
+    variables: {
+      groupBy: groupData,
+    },
+  });
   const handleCountrySelect = (country) => {
     if (selectCountries === country?.code) {
       setSelectCountries(null);
@@ -30,8 +34,8 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     if (!loading) {
       let countries = data?.countries;
-      let filterData = countries.filter((country) => {
-        const currency = Array.isArray(country.currency)
+      let filterData = countries?.filter((country) => {
+        const currency = Array.isArray(country?.currency)
           ? country.currency[0]
           : country.currency;
 
@@ -48,12 +52,13 @@ const AppProvider = ({ children }) => {
 
       setFilter(filterData);
 
-      if (filterData.length >= 10 && search === "") {
+      if (filterData?.length >= 10 && search === "") {
         const country = countries[10];
         handleCountrySelect(country);
       } else if (search) {
         const lastCountry = filterData[filterData.length - 1];
         handleCountrySelect(lastCountry);
+      
       }
     }
   }, [data, search, setFilter, loading]);
@@ -72,6 +77,15 @@ const AppProvider = ({ children }) => {
     setSearch("");
     setGroupSize([]);
   };
+  const handleSelect = async () => {
+    setIsGroup(false);
+    
+
+    setGroupData("")
+    setSearch("");
+    setGroupSize([]);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -91,6 +105,10 @@ const AppProvider = ({ children }) => {
         count,
         setCount,
         handleReturnList,
+        data,
+        groupData,
+        setGroupData,
+        handleSelect
       }}
     >
       {children}

@@ -10,6 +10,7 @@ export const GET_COUNTRIES = gql`
       native
       emoji
       currency
+      awsRegion
       languages {
         code
         name

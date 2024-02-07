@@ -5,8 +5,9 @@ import FormArea from "./FormArea";
 import GroupArea from "./GroupArea";
 import { ColorRing } from "react-loader-spinner";
 import Error from "./Error";
+import GroupCountries from "./GroupCountries";
 const Countries = () => {
-  const { filter, isGroup } = useGlobalContext();
+  const { filter, isGroup, groupData } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   
@@ -39,8 +40,12 @@ const Countries = () => {
           <GroupArea />
         </div>
       )}
+      
+      <div className={isGroup ?  `hidden`: `flex`}>
+      <GroupCountries/>
+      </div>
 
-      {!isGroup && (
+      { !groupData && !isGroup && (
         <>
           {error ? (
             <Error />
