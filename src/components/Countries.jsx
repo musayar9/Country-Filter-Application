@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "../Context";
 import CountryFilterList from "./CountryFilterList";
-import FormArea from "./FormArea";
+// import FormArea from "./FormArea";
 import GroupArea from "./GroupArea";
 import { ColorRing } from "react-loader-spinner";
 import Error from "./Error";
 import GroupCountries from "./GroupCountries";
+import Form from "./Form";
 const Countries = () => {
   const { filter, isGroup, groupData } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-  
 
-   useEffect(() => {
-     const timer = setTimeout(() => {
-       setIsLoading(false);
-     }, 200);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
 
-     return () => clearTimeout(timer);
-   }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (filter.length === 0 && !isLoading) {
@@ -29,23 +29,24 @@ const Countries = () => {
   }, [filter, isLoading]);
 
   return (
-    <div className="max-w-7xl mx-auto  p-4">
-    
-      <div className="max-w-xl mx-auto border border-emerald-300 rounded-lg shadow-md mt-10 p-8">
-        <FormArea />
-      </div>
+    <div className=" mx-auto  ">
+      <Form />
+
+      <h2 className="drop-shadow-xl text-center text-3xl text-emerald-600 font-bold mt-8">
+        Country Filter Application
+      </h2>
 
       {isGroup && (
         <div className="max-w-5xl overflow-x-auto mx-auto p-4 ">
           <GroupArea />
         </div>
       )}
-      
-      <div className={isGroup ?  `hidden`: `flex`}>
-      <GroupCountries/>
+
+      <div className={isGroup ? `hidden` : `flex`}>
+        <GroupCountries />
       </div>
 
-      { !groupData && !isGroup && (
+      {!groupData && !isGroup && (
         <>
           {error ? (
             <Error />
@@ -61,7 +62,7 @@ const Countries = () => {
               />
             </div>
           ) : (
-            <div className="max-w-5xl overflow-x-auto mx-auto p-4 rounded-md border border-emerald-300 my-7 shadow-xl">
+            <div className="max-w-5xl  overflow-x-auto mx-auto p-4 rounded-md border border-emerald-300 my-7 shadow-xl">
               <CountryFilterList />
             </div>
           )}
