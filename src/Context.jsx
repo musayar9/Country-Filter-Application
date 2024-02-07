@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { GET_COUNTRIES } from "./data/queries";
 import { getRandomColor } from "./components/Functions";
 import Loading from "./components/Loading";
+import PageNotFound from "./components/PageNotFound";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
@@ -58,7 +59,6 @@ const AppProvider = ({ children }) => {
       } else if (search) {
         const lastCountry = filterData[filterData.length - 1];
         handleCountrySelect(lastCountry);
-      
       }
     }
   }, [data, search, setFilter, loading]);
@@ -68,7 +68,8 @@ const AppProvider = ({ children }) => {
   }
 
   if (error) {
-    return <div>Error</div>;
+  console.log(error.message);
+    return <PageNotFound message={error.message} />;
   }
 
   const handleReturnList = () => {
@@ -79,9 +80,8 @@ const AppProvider = ({ children }) => {
   };
   const handleSelect = async () => {
     setIsGroup(false);
-    
 
-    setGroupData("")
+    setGroupData("");
     setSearch("");
     setGroupSize([]);
   };
@@ -108,7 +108,7 @@ const AppProvider = ({ children }) => {
         data,
         groupData,
         setGroupData,
-        handleSelect
+        handleSelect,
       }}
     >
       {children}

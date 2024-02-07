@@ -3,6 +3,7 @@ import { useGlobalContext } from "../Context";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { FiArrowLeft } from "react-icons/fi";
 import Error from "./Error";
+import { Helmet } from "react-helmet";
 const GroupArea = () => {
   const {
     group,
@@ -48,6 +49,10 @@ const GroupArea = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Group Size</title>
+        <meta name="description" content="group size" />
+      </Helmet>
       {filter.length !== 0 ? (
         <>
           <div className="rounded-md border border-slate-300 my-7 p-4 shadow-xl  overflow-x-auto">
