@@ -2,7 +2,7 @@ import notData from "../assets/notData.svg";
 import { BiSolidErrorCircle } from "react-icons/bi";
 const Error = () => {
   return (
-    <div className="flex items-center flex-col  justify-center mt-5">
+    <div className="flex items-center flex-col  justify-center my-5">
       <img src={notData} className=" w-56" />
 
       <p className="text-xl font-bold text-red-700 flex flex-1 items-center space-x-2 border border-red-800 shadow-lg rounded-md p-5 
