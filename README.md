@@ -1,4 +1,4 @@
-## Ülke Filtreleme Uygulaması - [Live Demo](country-filter-application.vercel.app)
+## Ülke Filtreleme Uygulaması - [Live Demo](https://country-filter-application.vercel.app/)
 
 Projeyi oluştururken javascript'in **React** framework'unu kullandım. Proje tasarımını **Tailwindcss** kullanarak yaptım. Graphql üzerindende appolo kütüphanesini kullanarak verileri kendi localime çektim.
 
