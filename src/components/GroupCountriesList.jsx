@@ -10,7 +10,7 @@ const GroupCountriesList = ({ group, countryList }) => {
       </Helmet>
       <div className="max-w-5xl">
         <div className="border p-4 rounded shadow-md  mt-10 bg-emerald-400 w-[900px]">
-          <h2 className="text-lg font-semibold mb-2 text-white">
+          <h2 className="text-lg font-semibold mb-2 text-white capitalize">
             {groupData} : {group}
           </h2>
           <ul className="grid grid-cols-4 gap-2">
