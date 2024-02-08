@@ -77,14 +77,9 @@ const AppProvider = ({ children }) => {
     setCount(0);
     setSearch("");
     setGroupSize([]);
-  };
-  const handleSelect = async () => {
-    setIsGroup(false);
-
     setGroupData("");
-    setSearch("");
-    setGroupSize([]);
   };
+
 
   return (
     <AppContext.Provider
@@ -108,7 +103,7 @@ const AppProvider = ({ children }) => {
         data,
         groupData,
         setGroupData,
-        handleSelect,
+    
       }}
     >
       {children}

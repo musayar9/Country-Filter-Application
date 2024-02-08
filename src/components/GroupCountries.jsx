@@ -4,9 +4,9 @@ import GroupCountriesList from "./GroupCountriesList";
 import TopButton from "./TopButton";
 
 const GroupCountries = () => {
-  const { groupData, data, handleSelect } = useGlobalContext();
+  const { groupData, data, handleReturnList } = useGlobalContext();
 
-  console.log("currencyValue", groupData);
+  
 
   const groupValue = {};
   let countryData = data.countries;
@@ -29,7 +29,7 @@ const GroupCountries = () => {
     groupValue[groupKey].push(country);
   });
 
-  console.log("data", groupValue);
+
 
   return (
     <>
@@ -54,7 +54,7 @@ const GroupCountries = () => {
               left: "40px",
               position: "fixed",
             }}
-            onClick={handleSelect}
+            onClick={handleReturnList}
           >
             <FiArrowLeft />{" "}
             <span className="font-semibold text-md">Return List</span>
