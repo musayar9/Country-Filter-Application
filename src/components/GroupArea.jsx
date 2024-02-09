@@ -123,7 +123,7 @@ const GroupArea = () => {
           <div className="mb-5 flex items-center mx-auto justify-center space-x-4">
             <button
               className="flex items-center justify-center w-8 h-8 px-2 py-2 
-            rounded-full hover:bg-red-500 group border-2 border-slate-400 shadow-xl drop-shadow-lg text-slate-500 disabled:text-gray-50 disabled:bg-red-900"
+            rounded-full hover:bg-red-500 group border-2 border-slate-400 shadow-xl drop-shadow-lg text-slate-500 disabled:text-gray-50 disabled:bg-red-900 disabled:cursor-not-allowed"
               disabled={count <= 0}
               onClick={() => setCount(count - 1)}
             >
@@ -133,7 +133,7 @@ const GroupArea = () => {
             <button
               className="flex items-center justify-center w-8 h-8 px-2 py-2 border-2
           border-slate-400 group duration-200 ease-out
-            rounded-full hover:bg-emerald-700 shadow-xl drop-shadow-lg text-slate-500 disabled:text-gray-50 disabled:bg-red-900"
+            rounded-full hover:bg-emerald-700 shadow-xl drop-shadow-lg text-slate-500 disabled:text-gray-50 disabled:bg-red-900 disabled:cursor-not-allowed"
               disabled={count === group.length - 1}
               onClick={() => setCount(count + 1)}
             >

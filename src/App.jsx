@@ -1,15 +1,13 @@
-import Countries from "./components/Countries"
-import Header from "./components/Header"
-
-
+import Countries from "./components/Countries";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <>
-    <Header/>
-      <Countries/>
+      <Header />
+      <Countries />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
