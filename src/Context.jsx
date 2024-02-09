@@ -68,7 +68,6 @@ const AppProvider = ({ children }) => {
   }
 
   if (error) {
-  console.log(error.message);
     return <PageNotFound message={error.message} />;
   }
 
