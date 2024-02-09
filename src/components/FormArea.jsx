@@ -85,7 +85,7 @@ const FormArea = () => {
             type="submit"
             disabled={groupSize === "" || groupSize === 0}
             className="text-slate-100   bg-emerald-500 
-     font-medium rounded-md text-xs px-2 py-2  mb-3 disabled:scale-0 disabled:cursor-not-allowed disabled:bg-emerald-300 disabled:text-slate-50 hover:bg-emerald-600 hover:scale-105 duration-200 ease-in"
+     font-medium rounded-md text-xs px-2 py-2  mb-3 disabled:cursor-not-allowed disabled:bg-emerald-300 disabled:text-slate-50 hover:bg-emerald-600 hover:scale-105 duration-200 ease-in"
           >
             Show Group
           </button>
