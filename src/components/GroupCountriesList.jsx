@@ -1,6 +1,8 @@
 import { useGlobalContext } from "../Context";
 import { Helmet } from "react-helmet";
 const GroupCountriesList = ({ group, countryList }) => {
+// Listing awsRegion or currency values
+
   const { groupData } = useGlobalContext();
   return (
     <>

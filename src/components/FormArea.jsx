@@ -2,6 +2,8 @@ import { useGlobalContext } from "../Context";
 import { filterGroupSize } from "./Functions";
 
 const FormArea = () => {
+  // select and input controls
+
   const {
     filter,
     search,
@@ -15,6 +17,7 @@ const FormArea = () => {
     setGroupData,
   } = useGlobalContext();
 
+  // group size controls
   const handleGroupSize = (e) => {
     const groupSizeValue = Number(e.target.value);
     if (!isNaN(groupSizeValue)) {
@@ -22,6 +25,7 @@ const FormArea = () => {
     }
   };
 
+  // grouping of filter result
   const handleSubmitGroupSize = (e) => {
     e.preventDefault();
     if (groupSize) {
@@ -32,6 +36,7 @@ const FormArea = () => {
     }
   };
 
+  // awsRegion or currency value controls
   const handleSelect = (e) => {
     setGroupData(e.target.value);
     setIsGroup(false);
@@ -43,6 +48,7 @@ const FormArea = () => {
     <div className="p-4">
       <div className="flex items-center justify-center space-x-4">
         <div className="relative z-20  mb-6 group">
+          {/*Enter a country currency  code */}
           <input
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-emerald-300 appearance-none  focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
             type="text"
@@ -59,7 +65,7 @@ const FormArea = () => {
             Currency Value
           </label>
         </div>
-
+        {/*Enter grouping size */}
         <form
           className="flex items-center justify-center space-x-2"
           onSubmit={handleSubmitGroupSize}
@@ -91,7 +97,9 @@ const FormArea = () => {
           </button>
         </form>
       </div>
-      <div className="">
+
+      {/*Select "awsRegion" or "currency" value */}
+      <div>
         <div className="relative z-20  mb-6 group">
           <select
             type="text"

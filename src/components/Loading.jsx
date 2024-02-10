@@ -1,5 +1,7 @@
 import { ColorRing } from "react-loader-spinner";
 const Loading = () => {
+// loading animation
+
   return (
     <div className="flex items-center justify-center h-[100vh]">
       <ColorRing

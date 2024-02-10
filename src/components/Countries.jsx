@@ -9,6 +9,8 @@ import GroupCountries from "./GroupCountries";
 import Form from "./Form";
 import { Helmet } from "react-helmet";
 const Countries = () => {
+  // component where data is shown
+
   const { filter, isGroup, groupData } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -31,28 +33,33 @@ const Countries = () => {
 
   return (
     <>
+      {/* Page Title  */}
       <Helmet>
         <title>Country Filter Application</title>
         <meta name="description" content="Country Filter Application" />
       </Helmet>
 
       <div className=" mx-auto  ">
+        {/* input and Select controls */}
         <Form />
 
         <h2 className="drop-shadow-xl text-center text-3xl text-emerald-600 font-bold mt-8">
           Country Filter Application
         </h2>
 
+        {/*// Place where grouped records are kept */}
         {isGroup && (
           <div className="max-w-5xl overflow-x-auto mx-auto p-4 ">
             <GroupArea />
           </div>
         )}
 
+        {/*// Filter and group by "currency" or "awsRegion" status */}
         <div className={isGroup ? `hidden` : `flex`}>
           <GroupCountries />
         </div>
 
+        {/*displaying all data in a table */}
         {!groupData && !isGroup && (
           <>
             {error ? (

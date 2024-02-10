@@ -2,6 +2,8 @@
 import { backToTop } from './Functions';
 import { FiArrowUp } from 'react-icons/fi';
 const TopButton = () => {
+  /*go back to top of list */
+
   return (
     <button
       className={`border border-emerald-200 px-5 py-2 rounded-xl flex items-center justify-between space-x-3 

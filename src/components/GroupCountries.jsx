@@ -4,6 +4,10 @@ import GroupCountriesList from "./GroupCountriesList";
 import TopButton from "./TopButton";
 
 const GroupCountries = () => {
+    
+      // Filter and group by "currency" or "awsRegion" status 
+    
+
   const { groupData, data, handleReturnList } = useGlobalContext();
 
   
@@ -35,6 +39,7 @@ const GroupCountries = () => {
     <>
       {groupData === "currency" || groupData === "awsRegion" ? (
         <div className="flex flex-col items-center justify-center mx-auto">
+          {/*Listing awsRegion or currency values */}
           {Object.entries(groupValue).map(([group, countryList]) => (
             <GroupCountriesList
               key={group}
@@ -45,6 +50,9 @@ const GroupCountries = () => {
           ))}
 
           <TopButton />
+          
+          
+          {/*Return list button */}
 
           <button
             className={`border border-emerald-200 px-5 py-2 rounded-xl flex items-center justify-between space-x-3 

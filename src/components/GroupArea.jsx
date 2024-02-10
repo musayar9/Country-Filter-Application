@@ -5,6 +5,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import Error from "./Error";
 import { Helmet } from "react-helmet";
 const GroupArea = () => {
+  /*grouping of filtering result */
   const {
     group,
     selectCountries,
@@ -20,7 +21,7 @@ const GroupArea = () => {
 
   useEffect(() => {
     let filteredCountries = group[count]?.filter((group) => {
-      const currency = Array.isArray(group.currency) 
+      const currency = Array.isArray(group.currency)
         ? group.currency[0]
         : group.currency;
 
@@ -34,18 +35,15 @@ const GroupArea = () => {
       return false;
     });
     setFilter(filteredCountries);
-    
 
     if (search === "" && filteredCountries.length >= 10) {
       const value = group[9];
       handleCountrySelect(value);
     } else if (search) {
-
       const lastCountry = filteredCountries[filteredCountries.length - 1];
       handleCountrySelect(lastCountry);
     }
   }, [count, search, group]);
-
 
   return (
     <>
@@ -120,6 +118,7 @@ const GroupArea = () => {
             </table>
           </div>
 
+          {/*switch between grouping lists */}
           <div className="mb-5 flex items-center mx-auto justify-center space-x-4">
             <button
               className="flex items-center justify-center w-8 h-8 px-2 py-2 

@@ -1,6 +1,10 @@
 import { useGlobalContext } from "../Context";
 import TopButton from "./TopButton";
+
+
 const CountryFilterList = () => {
+  // displaying all data in a table 
+
   const { filter, selectCountries, randomColor, handleCountrySelect } =
     useGlobalContext();
 
